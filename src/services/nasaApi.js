@@ -32,3 +32,22 @@ export async function getAPOD(date = "") {
   // Default: latest APOD
   return [data[0]];
 }
+export async function getMarsRoverPhotos(
+  rover = "curiosity"
+) {
+  const url =
+    `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos` +
+    `?sol=1000&api_key=DEMO_KEY`;
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(
+      "Mars Rover Photos API is unavailable or archived."
+    );
+  }
+
+  const data = await response.json();
+
+  return data.photos || [];
+}

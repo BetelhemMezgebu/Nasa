@@ -76,6 +76,19 @@ function Navbar() {
         >
           Favorites
         </NavLink>
+        
+        
+        <NavLink
+  to="/mars-rover"
+  onClick={closeMenu}
+  className={({ isActive }) =>
+    isActive
+      ? "nav-link active"
+      : "nav-link"
+  }
+>
+  Mars Rover
+</NavLink>
 
       </div>
 
