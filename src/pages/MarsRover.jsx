@@ -24,10 +24,11 @@ function MarsRover() {
       try {
         setLoading(true);
         setError("");
-        setPage(1);
 
         const data = await getMarsRoverPhotos(rover);
+
         setPhotos(data);
+        setPage(1);
       } catch (err) {
         setError(
           err.message || "Failed to load Mars Rover photos."
@@ -46,30 +47,31 @@ function MarsRover() {
         photos
           .map((photo) => photo.camera?.name)
           .filter(Boolean)
-      )
+      ),
     ];
 
     return [
       { value: "all", label: "All Cameras" },
       ...uniqueCameras.map((name) => ({
         value: name,
-        label: name
-      }))
+        label: name,
+      })),
     ];
   }, [photos]);
 
   const filteredPhotos = useMemo(() => {
     return photos.filter((photo) => {
       const title =
+        photo.title ||
         `${photo.rover?.name || "Mars"} Rover Photo`;
 
+      const searchText = search.toLowerCase();
+
       const searchMatch =
-        title
-          .toLowerCase()
-          .includes(search.toLowerCase()) ||
+        title.toLowerCase().includes(searchText) ||
         photo.camera?.full_name
           ?.toLowerCase()
-          .includes(search.toLowerCase());
+          .includes(searchText);
 
       const cameraMatch =
         camera === "all" ||
@@ -85,8 +87,7 @@ function MarsRover() {
     filteredPhotos.length / itemsPerPage
   );
 
-  const startIndex =
-    (page - 1) * itemsPerPage;
+  const startIndex = (page - 1) * itemsPerPage;
 
   const currentPhotos = filteredPhotos.slice(
     startIndex,
@@ -101,9 +102,7 @@ function MarsRover() {
 
   return (
     <main className="mars-rover-page">
-
       <header className="mars-rover-header">
-
         <p className="section-label">
           MARS EXPLORATION
         </p>
@@ -111,17 +110,14 @@ function MarsRover() {
         <h1>Mars Rover Photos</h1>
 
         <p>
-          Explore photographs captured by NASA's
-          Mars rovers and discover the Red Planet
-          through their cameras.
+          Explore photographs related to NASA's Mars
+          rover missions and discover the Red Planet
+          through NASA's image collection.
         </p>
-
       </header>
 
       <section className="mars-rover-controls">
-
         <div className="rover-selector">
-
           <label htmlFor="rover">
             Rover
           </label>
@@ -143,7 +139,6 @@ function MarsRover() {
               Spirit
             </option>
           </select>
-
         </div>
 
         <SearchBar
@@ -162,9 +157,8 @@ function MarsRover() {
             setPage(1);
           }}
           options={cameras}
-          label="Camera"
+          label="Source"
         />
-
       </section>
 
       {loading && (
@@ -182,7 +176,6 @@ function MarsRover() {
       {!loading && !error && (
         <>
           <section className="space-grid">
-
             {currentPhotos.map((photo) => {
               const id = photo.id;
 
@@ -196,7 +189,6 @@ function MarsRover() {
                 />
               );
             })}
-
           </section>
 
           {!currentPhotos.length && (
@@ -205,14 +197,15 @@ function MarsRover() {
             </div>
           )}
 
-          <Pagination
-            page={page}
-            totalPages={totalPages}
-            onPageChange={setPage}
-          />
+          {totalPages > 1 && (
+            <Pagination
+              page={page}
+              totalPages={totalPages}
+              onPageChange={setPage}
+            />
+          )}
         </>
       )}
-
     </main>
   );
 }

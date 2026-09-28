@@ -1,4 +1,10 @@
-import { createContext, useContext, useState } from "react";
+
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState
+} from "react";
 
 const FAVORITES_KEY = "nasaExplorerFavorites";
 
@@ -17,6 +23,25 @@ function readFavorites() {
 export function FavoritesProvider({ children }) {
   const [favorites, setFavorites] = useState(readFavorites);
 
+  // Keep Favorites synchronized across the whole app
+  useEffect(() => {
+    function handleFavoritesUpdated() {
+      setFavorites(readFavorites());
+    }
+
+    window.addEventListener(
+      "favoritesUpdated",
+      handleFavoritesUpdated
+    );
+
+    return () => {
+      window.removeEventListener(
+        "favoritesUpdated",
+        handleFavoritesUpdated
+      );
+    };
+  }, []);
+
   function save(nextFavorites) {
     localStorage.setItem(
       FAVORITES_KEY,
@@ -24,6 +49,10 @@ export function FavoritesProvider({ children }) {
     );
 
     setFavorites(nextFavorites);
+
+    window.dispatchEvent(
+      new Event("favoritesUpdated")
+    );
   }
 
   function isFavorite(id) {
@@ -64,6 +93,10 @@ export function FavoritesProvider({ children }) {
   function clearFavorites() {
     localStorage.removeItem(FAVORITES_KEY);
     setFavorites([]);
+
+    window.dispatchEvent(
+      new Event("favoritesUpdated")
+    );
   }
 
   return (
