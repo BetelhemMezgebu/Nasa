@@ -4,78 +4,66 @@ A modern React web application for exploring NASA's space data, discovering astr
 
 ## 🌐 Live Demo
 
-🚀 **Live Demo:** Coming soon
+🚀 **[Explore NASA Explorer](https://betelhemmezgebu.github.io/Nasa/)**
 
 ## 📦 GitHub Repository
 
-🔗 **Repository:** https://github.com/BetelhemMezgebu/Nasa
+💻 **[View Source Code on GitHub](https://github.com/BetelhemMezgebu/Nasa)**
 
 ---
 
 ## 🌌 Features
 
 ### 🏠 Home
-
-* Clean and responsive landing page
-* Easy navigation to NASA exploration features
-* Modern space-themed user interface
+- Clean and responsive landing page
+- Easy navigation to NASA exploration features
+- Modern space-themed user interface
 
 ### 🌠 Astronomy Picture of the Day (APOD)
-
-* Explore NASA's Astronomy Picture of the Day
-* View astronomy images and information
-* Display:
-
-  * Image
-  * Title
-  * Date
-  * Explanation
-* Loading and error states
+- Explore NASA's Astronomy Picture of the Day
+- View astronomy images and information
+- Display image, title, date, and explanation
+- Loading and error states
 
 ### 🔴 Mars Explorer
-
-* Explore Mars-related NASA imagery
-* Search and filter NASA images
-* View image titles, descriptions, and dates
-* Pagination for browsing results
+- Explore Mars-related NASA imagery
+- Search and filter NASA images
+- View image titles, descriptions, and dates
+- Pagination for browsing results
 
 ### ❤️ Favorites
-
-* Add NASA discoveries to favorites
-* Remove individual favorites
-* Clear all favorites
-* Favorites persist using browser `localStorage`
-* Favorites remain available after page refresh
+- Add NASA discoveries to favorites
+- Remove individual favorites
+- Clear all favorites
+- Persist favorites using browser `localStorage`
+- Keep favorites after refreshing the page
 
 ### 📱 Responsive Design
+Designed to work across:
+- 💻 Desktop
+- 📱 Mobile
+- 📲 Tablet
 
-The application is designed to work across:
-
-* 💻 Desktop
-* 📱 Mobile
-* 📲 Tablet
-
-### ⚠️ Error & Loading Handling
-
-* Loading states while fetching API data
-* Error messages when requests fail
-* Empty-result handling
+### ⚠️ Error and Loading Handling
+- Loading states while fetching API data
+- Error messages when requests fail
+- Empty-result handling
 
 ---
 
 ## 🛠️ Technologies
 
-* **React**
-* **Vite**
-* **JavaScript (ES6+)**
-* **React Router**
-* **Context API**
-* **NASA APIs**
-* **REST APIs**
-* **localStorage**
-* **HTML5**
-* **CSS3**
-* **Git & GitHub**
+- **React**
+- **Vite**
+- **JavaScript (ES6+)**
+- **React Router**
+- **Context API**
+- **NASA APIs**
+- **REST APIs**
+- **localStorage**
+- **HTML5**
+- **CSS3**
+- **Git and GitHub**
 
 ---
 
@@ -83,14 +71,10 @@ The application is designed to work across:
 
 ```text
 nasa-explorer/
-│
 ├── public/
 │   └── images/
-│
 ├── src/
-│   │
 │   ├── assets/
-│   │
 │   ├── components/
 │   │   ├── FavoriteButton.jsx
 │   │   ├── FilterBar.jsx
@@ -98,23 +82,18 @@ nasa-explorer/
 │   │   ├── Navbar.jsx
 │   │   ├── Pagination.jsx
 │   │   └── SpaceCard.jsx
-│   │
 │   ├── context/
 │   │   └── FavoritesContext.jsx
-│   │
 │   ├── pages/
 │   │   ├── Home.jsx
 │   │   ├── APOD.jsx
 │   │   ├── MarsRover.jsx
 │   │   └── Favorites.jsx
-│   │
 │   ├── services/
 │   │   └── nasaApi.js
-│   │
 │   ├── App.jsx
 │   ├── main.jsx
 │   └── index.css
-│
 ├── .env
 ├── .gitignore
 ├── index.html
@@ -127,12 +106,12 @@ nasa-explorer/
 
 ## 🔗 Application Routes
 
-| Route         | Description                  |
-| ------------- | ---------------------------- |
-| `/`           | Home page                    |
-| `/apod`       | Astronomy Picture of the Day |
-| `/mars-rover` | Explore Mars imagery         |
-| `/favorites`  | Saved NASA discoveries       |
+| Route | Description |
+|---|---|
+| `/` | Home page |
+| `/apod` | Astronomy Picture of the Day |
+| `/mars-rover` | Explore Mars imagery |
+| `/favorites` | Saved NASA discoveries |
 
 ---
 
@@ -140,19 +119,16 @@ nasa-explorer/
 
 NASA Explorer retrieves space-related data through NASA's public services.
 
-### APOD
-
+### Astronomy Picture of the Day (APOD)
 The APOD feature provides:
-
-* Astronomy images
-* Titles
-* Dates
-* Explanations
-* Daily astronomy content
+- Astronomy images
+- Titles
+- Dates
+- Explanations
+- Daily astronomy content
 
 ### NASA Image Library
-
-The Mars Explorer feature uses NASA's image services to retrieve Mars-related imagery.
+The Mars Explorer uses NASA's image services to retrieve Mars-related imagery.
 
 API functionality is organized inside:
 
@@ -185,11 +161,10 @@ nasaExplorerFavorites
 ```
 
 Users can:
-
-* Add a favorite
-* Remove a favorite
-* Clear all favorites
-* Keep favorites after refreshing the page
+- Add a favorite
+- Remove individual favorites
+- Clear all favorites
+- Keep favorites after refreshing the page
 
 ---
 
@@ -201,7 +176,7 @@ Users can:
 git clone https://github.com/BetelhemMezgebu/Nasa.git
 ```
 
-### 2. Navigate to the project
+### 2. Navigate to the project directory
 
 ```bash
 cd Nasa
@@ -233,11 +208,11 @@ VITE_NASA_API_KEY=your_api_key_here
 
 Never commit private API keys or other secrets to GitHub.
 
-Make sure `.env` is included in `.gitignore`.
+Make sure `.env` is included in `.gitignore`. Remember that Vite exposes variables prefixed with `VITE_` to client-side code, so these must not contain private secrets.
 
 ---
 
-## 🏗️ Build
+## 🏗️ Build and Preview
 
 Create a production build:
 
@@ -257,51 +232,45 @@ npm run preview
 
 This project helped us practice real-world frontend development, including:
 
-* Building applications with React
-* Working with external REST APIs
-* Asynchronous JavaScript
-* React component architecture
-* React Router
-* Context API
-* State management
-* Browser `localStorage`
-* Search and filtering
-* Pagination
-* Loading and error handling
-* Responsive web design
-* Git and GitHub collaboration
-* Debugging API integration problems
+- Building applications with React
+- Working with external REST APIs
+- Asynchronous JavaScript
+- React component architecture
+- React Router
+- Context API and state management
+- Browser `localStorage`
+- Search and filtering
+- Pagination
+- Loading and error handling
+- Responsive web design
+- Git and GitHub collaboration
+- Debugging API integration problems
 
 ---
 
 ## 👥 Team
 
 ### Betelhem Mezgebu
-
-Frontend Developer
+**Frontend Developer**
 
 Contributions included:
-
-* React development
-* API integration
-* UI implementation
-* Favorites functionality
-* State management
-* Debugging
-* Testing
-* Git/GitHub collaboration
+- React development
+- API integration
+- UI implementation
+- Favorites functionality
+- State management
+- Debugging and testing
+- Git and GitHub collaboration
 
 ### Eman
-
-Frontend Developer
+**Frontend Developer**
 
 Contributions included:
-
-* React development
-* UI components
-* Feature implementation
-* Testing
-* Git/GitHub collaboration
+- React development
+- UI components
+- Feature implementation
+- Testing
+- Git and GitHub collaboration
 
 ---
 
@@ -315,17 +284,15 @@ The goal was to create an interactive platform where users can explore NASA's sp
 
 ## 🔮 Future Improvements
 
-Potential improvements include:
-
-* User authentication
-* More NASA datasets
-* Advanced search
-* Date-based APOD browsing
-* More Mars exploration filters
-* Additional NASA missions
-* Dark/light theme
-* Improved accessibility
-* Better API caching and performance
+- User authentication
+- More NASA datasets
+- Advanced search
+- Date-based APOD browsing
+- More Mars exploration filters
+- Additional NASA missions
+- Dark and light themes
+- Improved accessibility
+- Better API caching and performance
 
 ---
 
